@@ -123,9 +123,10 @@ static const CGFloat MMNumberKeyboardPadSpacing = 8.0f;
         
         [buttonDictionary setObject:button forKey:@(key)];
     }
-    
-    UIImage *backspaceImage = [UIImage imageNamed:@"MMNumberKeyboardDeleteKey.png"];
-    UIImage *dismissImage = [UIImage imageNamed:@"MMNumberKeyboardDismissKey.png"];
+
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *backspaceImage = [UIImage imageNamed:@"delete-key" inBundle:bundle compatibleWithTraitCollection:nil];
+    UIImage *dismissImage = [UIImage imageNamed:@"dismiss-key" inBundle:bundle compatibleWithTraitCollection:nil];
     
     UIButton *backspaceButton = [_MMNumberKeyboardButton keyboardButtonWithStyle:MMNumberKeyboardButtonStyleGray];
     [backspaceButton setImage:[backspaceImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
