@@ -124,8 +124,8 @@ static const CGFloat MMNumberKeyboardPadSpacing = 8.0f;
         [buttonDictionary setObject:button forKey:@(key)];
     }
     
-    UIImage *backspaceImage = [self.class _keyboardImageNamed:@"MMNumberKeyboardDeleteKey.png"];
-    UIImage *dismissImage = [self.class _keyboardImageNamed:@"MMNumberKeyboardDismissKey.png"];
+    UIImage *backspaceImage = [UIImage imageNamed:@"MMNumberKeyboardDeleteKey.png"];
+    UIImage *dismissImage = [UIImage imageNamed:@"MMNumberKeyboardDismissKey.png"];
     
     UIButton *backspaceButton = [_MMNumberKeyboardButton keyboardButtonWithStyle:MMNumberKeyboardButtonStyleGray];
     [backspaceButton setImage:[backspaceImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
@@ -623,27 +623,6 @@ NS_INLINE CGRect MMButtonRectMake(CGRect rect, CGRect contentRect, UIUserInterfa
 - (BOOL)enableInputClicksWhenVisible
 {
     return YES;
-}
-
-#pragma mark - Accessing keyboard images.
-
-+ (UIImage *)_keyboardImageNamed:(NSString *)name
-{
-    NSString *resource = [name stringByDeletingPathExtension];
-    NSString *extension = [name pathExtension];
-    
-    if (!resource.length) {
-        return nil;
-    }
-
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *resourcePath = [bundle pathForResource:resource ofType:extension];
-
-    if (resourcePath.length) {
-        return [UIImage imageWithContentsOfFile:resourcePath];
-    }
-
-    return [UIImage imageNamed:resource];
 }
 
 @end
